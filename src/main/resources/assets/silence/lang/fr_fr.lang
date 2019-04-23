@@ -1,15 +1,30 @@
+#CreativeTabs
+itemGroup.miscellaneous=Divers
+
 #Items
 item.bauxite.name=Bauxite
 item.aluminum_ingot.name=Lingot d'Aluminium
+item.aluminum_nugget.name=Pépite d'Aluminium
 item.rutile.name=Rutile
 item.rutile_ore.name=Minerai de Rutile
 item.titanium_bar.name=Barre de Titane
-item.parasite_bit.name=Bout de Parasite
-item.parasite_tooth.name=Dent de Parasite
-item.parasite_egg.name=Œuf de Parasite
+item.titanium_nugget.name=Pépite de Titane
+item.parasite_bit.name=Bout de parasite
+item.parasite_tooth.name=Dent de parasite
+item.parasite_egg.name=Œuf de parasite
 item.cereal_bar.name=Barre de céréales
 item.canned_beans.name=Haricots en conserve
 item.canned_fruit.name=Fruits en conserve
 item.canned_corn.name=Maïs en conserve
 item.canned_tuna.name=Thon en conserve
-item.tin_can.name=Boite de Conserve
+item.tin_can.name=Boite de conserve
+item.aluminum_wire.name=Fil d'aluminium
+item.nail.name=Clou
+item.saw.name=Scie
+item.tape.name=Ruban adhésif
+item.plastic.name=Plastique
+item.glue_stick.name=Tube de colle
+item.car_wheel.name=Roue de voiture
+item.steering_wheel.name=Volant de voiture
+item.car_motor.name=Moteur de voiture
+item.weapon_plan.name=Plan d'arme

@@ -1,9 +1,14 @@
+#CreativeTabs
+itemGroup.miscellaneous=Miscellaneous
+
 #Items
 item.bauxite.name=Bauxite
 item.aluminum_ingot.name=Aluminum Ingot
+item.aluminum_nugget.name=Aluminum Nugget
 item.rutile.name=Rutile
 item.rutile_ore.name=Rutile Ore
 item.titanium_bar.name=Titanium Bar
+item.titanium_nugget.name=Titanium Nugget
 item.parasite_bit.name=Parasite Bit
 item.parasite_tooth.name=Parasite Tooth
 item.parasite_egg.name=Parasite Egg
@@ -13,3 +18,13 @@ item.canned_fruit.name=Canned Fruit
 item.canned_corn.name=Canned corn
 item.canned_tuna.name=Canned tuna
 item.tin_can.name=Tin can
+item.aluminum_wire.name=Aluminum wire
+item.nail.name=Nail
+item.saw.name=Saw
+item.tape.name=Tape
+item.plastic.name=Plastic
+item.glue_stick.name=Glue stick
+item.car_wheel.name=Car wheel
+item.steering_wheel.name=Steering wheel
+item.car_motor.name=Car motor
+item.weapon_plan.name=Weapon plan

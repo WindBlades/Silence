@@ -24,8 +24,7 @@ public class Silence {
 	public static Common proxy;
 	
 	@EventHandler
-	public void preInit(FMLPreInitializationEvent event)
-	{
+	public void preInit(FMLPreInitializationEvent event) {
 		proxy.preInit(event);
 	}
 	
@@ -35,8 +34,7 @@ public class Silence {
 	}
 	
 	@EventHandler
-	public void postInit(FMLPostInitializationEvent event)
-	{
+	public void postInit(FMLPostInitializationEvent event) {
 		proxy.postInit(event);
 	}
 }

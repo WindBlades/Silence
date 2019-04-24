@@ -16,11 +16,11 @@ public class ItemParasiteBit extends ItemFood {
 	@Override
 	protected void onFoodEaten(ItemStack stack, World worldIn, EntityPlayer player) {
 		if(worldIn.isRemote) return;
-		
+
 		if(worldIn.rand.nextInt(100) < 25) {
 			player.addPotionEffect(new PotionEffect(MobEffects.NAUSEA, 300));
 		}
-		
+
 		if(worldIn.rand.nextInt(100) < 40) {
 			player.addPotionEffect(new PotionEffect(MobEffects.HUNGER, 160));
 		}

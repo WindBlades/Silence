@@ -9,7 +9,7 @@ public class CreativeTabsMisc extends CreativeTabs {
 	public CreativeTabsMisc() {
 		super("miscellaneous");
 	}
-	
+
 	@Override
 	public ItemStack getTabIconItem() {
 		return new ItemStack(ItemsSL.item_tin_can);

@@ -9,9 +9,9 @@ import net.minecraftforge.fml.common.event.FMLPreInitializationEvent;
 import net.minecraftforge.fml.common.registry.GameRegistry;
 
 public class Common {
-	
+
 	public void preInit(FMLPreInitializationEvent event) {
-		
+
 	}
 
 	public void init(FMLInitializationEvent event) {
@@ -19,9 +19,9 @@ public class Common {
 	}
 
 	public void postInit(FMLPostInitializationEvent event) {
-		
+
 	}
-	
+
 
 	private static void addSmeltingRecipes() {	
 		GameRegistry.addSmelting(ItemsSL.item_bauxite, new ItemStack(ItemsSL.item_aluminum_ingot), 0);

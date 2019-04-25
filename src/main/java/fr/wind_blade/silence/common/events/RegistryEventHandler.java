@@ -2,6 +2,9 @@ package fr.wind_blade.silence.common.events;
 
 import fr.wind_blade.silence.Silence;
 import fr.wind_blade.silence.common.blocks.BlockSL;
+import fr.wind_blade.silence.common.blocks.IItemBlockState;
+import fr.wind_blade.silence.common.blocks.ItemBlockGeneric;
+import fr.wind_blade.silence.common.items.IMeta;
 import fr.wind_blade.silence.common.items.ItemsSL;
 import net.minecraft.block.Block;
 import net.minecraft.client.renderer.block.model.ModelResourceLocation;
@@ -20,36 +23,36 @@ public class RegistryEventHandler {
 
 	@SubscribeEvent
 	public static void registerItems(RegistryEvent.Register<Item> e) {
+		BlockSL.blocks.forEach(block -> ItemsSL.items.add((block instanceof IItemBlockState ? new ItemBlockGeneric(block, ((IItemBlockState)block).getMeta()) : new ItemBlock(block)).setUnlocalizedName(block.getUnlocalizedName()).setRegistryName(block.getRegistryName()).setCreativeTab(ItemsSL.miscellaneous)));
 		e.getRegistry().registerAll(ItemsSL.items.toArray(new Item[0]));
-		BlockSL.blocks.forEach(block -> e.getRegistry().register(new ItemBlock(block).setUnlocalizedName(block.getUnlocalizedName()).setRegistryName(block.getRegistryName())));
 	}
 
 	@SubscribeEvent
 	public static void registerBlocks(RegistryEvent.Register<Block> e) {
 		e.getRegistry().registerAll(BlockSL.blocks.toArray(new Block[0]));
 	}
-	
+
 	@SideOnly(Side.CLIENT)
 	@SubscribeEvent
 	public static void onModelRegistry(ModelRegistryEvent event) {
 		ItemsSL.items.forEach(item -> registerItemsModels(item));
 	}
-	
+
 	@SideOnly(Side.CLIENT)
 	public static void registerItemsModels(Item item) {
-		if(item.getHasSubtypes()) {
-			for(int i = 0; i < item.getMaxDamage(); i++) {
+		if(item instanceof IMeta) {
+			for(int i = 0; i < ((IMeta)item).getMaxMeta(); i++) {
 				registerItemsModels(item, i);
 			}
 		}
 		else registerItemsModels(item, 0);
-    }
-	
+	}
+
 	@SideOnly(Side.CLIENT)
 	public static void registerItemsModels(Item item, int metadata) {
-	    if (metadata < 0) metadata = 0;
-	    String resourceName = item.getRegistryName().toString();
-	    if (metadata > 0) resourceName += "_" + String.valueOf(metadata);
-	    ModelLoader.setCustomModelResourceLocation(item, metadata, new ModelResourceLocation(resourceName, "inventory"));
-    }
+		if (metadata < 0) metadata = 0;
+		String resourceName = item.getRegistryName().toString();
+		if (metadata > 0) resourceName += "_" + String.valueOf(metadata);
+		ModelLoader.setCustomModelResourceLocation(item, metadata, new ModelResourceLocation(resourceName, "inventory"));
+	}
 }

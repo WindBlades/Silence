@@ -1,7 +1,8 @@
 {
+	"credit": "Made with Blockbench",
 	"textures": {
-		"0": "silence:blocks/wine_bottle",
-		"particle": "silence:blocks/wine_bottle"
+		"0": "silence:blocks/bottle_green1",
+		"particle": "silence:blocks/bottle_green1"
 	},
 	"elements": [
 		{

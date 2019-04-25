@@ -1,5 +1,11 @@
 {
    "variants": {
-       "normal": { "model": "silence:wine_bottle" }
+       "variant=bottle_green1": { "model": "silence:bottle_green1" },
+       "variant=bottle_green2": { "model": "silence:bottle_green2" },
+       "variant=bottle_green3": { "model": "silence:bottle_green3" },
+       "variant=bottle_red1": { "model": "silence:bottle_red1" },
+       "variant=bottle_red2": { "model": "silence:bottle_red2" },
+       "variant=bottle_red3": { "model": "silence:bottle_red3" },
+       "variant=bottle_red4": { "model": "silence:bottle_red4" }
    }
 }

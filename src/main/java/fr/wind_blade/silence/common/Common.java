@@ -22,7 +22,6 @@ public class Common {
 
 	}
 
-
 	private static void addSmeltingRecipes() {	
 		GameRegistry.addSmelting(ItemsSL.item_bauxite, new ItemStack(ItemsSL.item_aluminum_ingot), 0);
 		GameRegistry.addSmelting(ItemsSL.item_rutile, new ItemStack(ItemsSL.item_titanium_bar), 0);

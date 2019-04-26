@@ -1,7 +1,6 @@
 package fr.wind_blade.silence.common.blocks;
 import fr.wind_blade.silence.common.items.IMeta;
 import fr.wind_blade.silence.common.items.ItemsSL;
-import fr.wind_blade.silence.common.items.ItemTinCanFood.Type;
 import net.minecraft.block.Block;
 import net.minecraft.creativetab.CreativeTabs;
 import net.minecraft.item.ItemBlock;
@@ -20,8 +19,8 @@ public class ItemBlockGeneric extends ItemBlock implements IMeta {
 
     @Override
 	public void getSubItems(CreativeTabs tab, NonNullList<ItemStack> items) {
-    	System.out.println(tab != CreativeTabs.SEARCH && tab != ItemsSL.miscellaneous);
-		if(tab != CreativeTabs.SEARCH && tab != ItemsSL.miscellaneous) return;
+
+    	if(tab != CreativeTabs.SEARCH && tab != ItemsSL.miscellaneous) return;
 
 		for(int i = 0; i < maxMeta; i++) {
 			items.add(new ItemStack(this, 1, i));
@@ -29,11 +28,6 @@ public class ItemBlockGeneric extends ItemBlock implements IMeta {
 
     	super.getSubItems(tab, items);
 	}
-   
-	@Override
-    public int getMetadata(ItemStack stack) {
-        return this.getMetadata(stack.getItemDamage());
-    }
     
     @Override
     public int getMaxMeta() {

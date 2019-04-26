@@ -1,5 +1,6 @@
 package fr.wind_blade.silence.common.blocks;
 
+import fr.wind_blade.silence.common.items.IMeta;
 import net.minecraft.block.Block;
 import net.minecraft.block.material.Material;
 import net.minecraft.block.properties.IProperty;
@@ -8,8 +9,11 @@ import net.minecraft.block.state.BlockStateContainer;
 import net.minecraft.block.state.IBlockState;
 import net.minecraft.creativetab.CreativeTabs;
 import net.minecraft.entity.EntityLivingBase;
+import net.minecraft.item.Item;
 import net.minecraft.item.ItemStack;
 import net.minecraft.util.BlockRenderLayer;
+import net.minecraft.util.EnumFacing;
+import net.minecraft.util.EnumHand;
 import net.minecraft.util.IStringSerializable;
 import net.minecraft.util.NonNullList;
 import net.minecraft.util.math.AxisAlignedBB;
@@ -19,7 +23,7 @@ import net.minecraft.world.World;
 import net.minecraftforge.fml.relauncher.Side;
 import net.minecraftforge.fml.relauncher.SideOnly;
 
-public class BlockBottle extends Block implements IItemBlockState {
+public class BlockBottle extends Block implements IMeta {
 
 	public static final PropertyEnum<Type> VARIANT = PropertyEnum.create("variant", Type.class);
 	
@@ -81,14 +85,21 @@ public class BlockBottle extends Block implements IItemBlockState {
 	}
 
 	@Override
-	public void onBlockPlacedBy(World worldIn, BlockPos pos, IBlockState state, EntityLivingBase placer,
-			ItemStack stack) {
-		state.withProperty(VARIANT, Type.getFromMeta(stack.getItemDamage()));
-		super.onBlockPlacedBy(worldIn, pos, state, placer, stack);
+	public IBlockState getStateForPlacement(World world, BlockPos pos, EnumFacing facing, float hitX, float hitY,
+			float hitZ, int meta, EntityLivingBase placer, EnumHand hand) {
+		
+		IBlockState state = super.getStateForPlacement(world, pos, facing, hitX, hitY, hitZ, meta, placer, hand);
+		ItemStack stack = placer.getHeldItem(hand);
+		
+		if(stack.getItem().equals(Item.getItemFromBlock(BlocksSL.wine_bottle))) {
+			state = state.withProperty(VARIANT, Type.getFromMeta(stack.getItemDamage()));
+		}
+		
+		return state;
 	}
 
 	@Override
-	public int getMeta() {
+	public int getMaxMeta() {
 		return Type.values().length;
 	}
 

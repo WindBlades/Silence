@@ -9,7 +9,7 @@ import net.minecraft.block.material.Material;
 import net.minecraft.creativetab.CreativeTabs;
 import net.minecraft.util.ResourceLocation;
 
-public class BlockSL {
+public class BlocksSL {
 
 	public static final List<Block> blocks = new ArrayList<>();
 

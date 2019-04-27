@@ -30,6 +30,11 @@ public class ItemBlockGeneric extends ItemBlock implements IMeta {
 	}
     
     @Override
+	public int getMetadata(int damage) {
+    	return damage;
+	}
+
+	@Override
     public int getMaxMeta() {
     	return this.maxMeta;
     }

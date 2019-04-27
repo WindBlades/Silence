@@ -20,7 +20,7 @@ public class Silence {
 	@Instance(Silence.MODID)
 	public static Silence instance;
 	
-	@SidedProxy(clientSide = "fr.wind_blade.silence.client.Client", serverSide = "fr.wind_blade.isorropia.common.Common")
+	@SidedProxy(clientSide = "fr.wind_blade.silence.client.Client", serverSide = "fr.wind_blade.silence.common.Common")
 	public static Common proxy;
 	
 	@EventHandler

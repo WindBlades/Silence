@@ -14,7 +14,9 @@ public class BlocksSL {
 	public static final List<Block> blocks = new ArrayList<>();
 
 	public static final Block block_rutile_ore = getBlock("rutile_ore", Material.IRON); 
-	public static final Block wine_bottle = getBlock(new BlockBottle(Material.GLASS), "wine_bottle"); 
+	public static final Block green_wine_bottle = getBlock(new BlockGreenBottle(Material.GLASS), "green_wine_bottle"); 
+	public static final Block red_wine_bottle = getBlock(new BlockRedBottle(Material.GLASS), "red_wine_bottle"); 
+	public static final Block tire = getBlock(new BlockGenericDecoration(Material.GLASS), "tire"); 
 
 	private static Block getBlock(String name, Material material) {
 		return getBlock(new Block(material), name);

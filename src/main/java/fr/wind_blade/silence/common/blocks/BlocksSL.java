@@ -22,7 +22,7 @@ public class BlocksSL {
 		return getBlock(new Block(material), name);
 	}
 	
-	private static Block getBlock(Block block, String name) {
+	private static <T extends Block> T getBlock(T block, String name) {
 		block.setUnlocalizedName(name).setRegistryName(new ResourceLocation(Silence.MODID, name));
 		block.setCreativeTab(CreativeTabs.DECORATIONS);
 		blocks.add(block);

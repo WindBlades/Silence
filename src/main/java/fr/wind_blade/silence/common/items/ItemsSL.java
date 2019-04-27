@@ -42,7 +42,7 @@ public class ItemsSL {
 		return getItem(new Item(), name);
 	}
 
-	public static Item getItem(Item item, String name) {
+	public static <T extends Item> T getItem(T item, String name) {
 		item.setUnlocalizedName(name).setRegistryName(new ResourceLocation(Silence.MODID, name));
 		item.setCreativeTab(miscellaneous);
 		items.add(item);

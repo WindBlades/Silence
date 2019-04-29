@@ -1,5 +1,5 @@
 package fr.wind_blade.silence.common.blocks;
-import fr.wind_blade.silence.common.items.IMeta;
+import fr.wind_blade.silence.common.items.IMetaProvider;
 import fr.wind_blade.silence.common.items.ItemsSL;
 import net.minecraft.block.Block;
 import net.minecraft.creativetab.CreativeTabs;
@@ -7,7 +7,7 @@ import net.minecraft.item.ItemBlock;
 import net.minecraft.item.ItemStack;
 import net.minecraft.util.NonNullList;
 
-public class ItemBlockGeneric extends ItemBlock implements IMeta {
+public class ItemBlockGeneric extends ItemBlock implements IMetaProvider {
 
 	private final int maxMeta;
 	

@@ -9,7 +9,7 @@ import net.minecraft.item.ItemStack;
 import net.minecraft.util.NonNullList;
 import net.minecraft.world.World;
 
-public class ItemTinCanFood extends ItemFood implements IMeta{
+public class ItemTinCanFood extends ItemFood implements IMetaProvider{
 
 	public ItemTinCanFood() {
 		super(0, false);

@@ -3,7 +3,7 @@ package fr.wind_blade.silence.common.events;
 import fr.wind_blade.silence.Silence;
 import fr.wind_blade.silence.common.blocks.BlocksSL;
 import fr.wind_blade.silence.common.blocks.ItemBlockGeneric;
-import fr.wind_blade.silence.common.items.IMeta;
+import fr.wind_blade.silence.common.items.IMetaProvider;
 import fr.wind_blade.silence.common.items.ItemsSL;
 import net.minecraft.block.Block;
 import net.minecraft.client.renderer.block.model.ModelResourceLocation;
@@ -22,25 +22,25 @@ public class RegistryEventHandler {
 
 	@SubscribeEvent
 	public static void registerItems(RegistryEvent.Register<Item> e) {
-		BlocksSL.blocks.forEach(block -> ItemsSL.items.add((block instanceof IMeta ? new ItemBlockGeneric(block, ((IMeta)block).getMaxMeta()) : new ItemBlock(block)).setUnlocalizedName(block.getUnlocalizedName()).setRegistryName(block.getRegistryName()).setCreativeTab(ItemsSL.miscellaneous)));
-		e.getRegistry().registerAll(ItemsSL.items.toArray(new Item[0]));
+		BlocksSL.blocks.forEach(block -> ItemsSL.items.add((block instanceof IMetaProvider ? new ItemBlockGeneric(block, ((IMetaProvider)block).getMaxMeta()) : new ItemBlock(block)).setUnlocalizedName(block.getUnlocalizedName()).setRegistryName(block.getRegistryName()).setCreativeTab(ItemsSL.miscellaneous)));
+		ItemsSL.items.forEach(e.getRegistry()::register);
 	}
 
 	@SubscribeEvent
 	public static void registerBlocks(RegistryEvent.Register<Block> e) {
-		e.getRegistry().registerAll(BlocksSL.blocks.toArray(new Block[0]));
+		BlocksSL.blocks.forEach(e.getRegistry()::register);
 	}
 
 	@SideOnly(Side.CLIENT)
 	@SubscribeEvent
 	public static void onModelRegistry(ModelRegistryEvent event) {
-		ItemsSL.items.forEach(item -> registerItemsModels(item));
+		ItemsSL.items.forEach(RegistryEventHandler::registerItemsModels);
 	}
 
 	@SideOnly(Side.CLIENT)
 	public static void registerItemsModels(Item item) {
-		if(item instanceof IMeta) {
-			for(int i = 0; i < ((IMeta)item).getMaxMeta(); i++) {
+		if(item instanceof IMetaProvider) {
+			for(int i = 0; i < ((IMetaProvider)item).getMaxMeta(); i++) {
 				registerItemsModels(item, i);
 			}
 		}

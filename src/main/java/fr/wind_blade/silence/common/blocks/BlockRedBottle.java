@@ -1,6 +1,6 @@
 package fr.wind_blade.silence.common.blocks;
 
-import fr.wind_blade.silence.common.items.IMeta;
+import fr.wind_blade.silence.common.items.IMetaProvider;
 import net.minecraft.block.Block;
 import net.minecraft.block.material.Material;
 import net.minecraft.block.properties.IProperty;
@@ -21,7 +21,7 @@ import net.minecraft.world.World;
 import net.minecraftforge.fml.relauncher.Side;
 import net.minecraftforge.fml.relauncher.SideOnly;
 
-public class BlockRedBottle extends BlockGenericDecoration implements IMeta {
+public class BlockRedBottle extends BlockGenericDecoration implements IMetaProvider {
 
 	public static final PropertyEnum<Type> VARIANT = PropertyEnum.create("variant", Type.class);
 

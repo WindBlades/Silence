@@ -1,5 +1,6 @@
 package fr.wind_blade.silence.common.items;
 
+import fr.wind_blade.silence.common.IVariantProvider;
 import net.minecraft.creativetab.CreativeTabs;
 import net.minecraft.entity.EntityLivingBase;
 import net.minecraft.entity.player.EntityPlayer;
@@ -9,7 +10,7 @@ import net.minecraft.item.ItemStack;
 import net.minecraft.util.NonNullList;
 import net.minecraft.world.World;
 
-public class ItemTinCanFood extends ItemFood implements IMetaProvider{
+public class ItemTinCanFood extends ItemFood implements IVariantProvider {
 
 	public ItemTinCanFood() {
 		super(0, false);
@@ -29,7 +30,7 @@ public class ItemTinCanFood extends ItemFood implements IMetaProvider{
 		if(tab != CreativeTabs.SEARCH && tab != ItemsSL.miscellaneous) return;
 		
 		for(Type type : Type.values()) {
-			items.add(new ItemStack(this, 1, type.getMeta()));
+			items.add(new ItemStack(this, 1, type.ordinal()));
 		}
 	}
 
@@ -55,39 +56,31 @@ public class ItemTinCanFood extends ItemFood implements IMetaProvider{
 
 	@Override
 	public int getHealAmount(ItemStack stack) {
-		return Type.getFromMeta(stack.getItemDamage()).getAmount();
+		return Type.values()[(stack.getItemDamage())].getAmount();
 	}
 
 	@Override
-	public int getMaxMeta() {
+	public int getMaxVariants() {
 		return Type.values().length;
 	}
 	
+	@Override
+	public String getVariantName(int variant) {
+		return this.getRegistryName().toString() + "_" + variant;
+	}
+
 	public enum Type {
 		
-		EMPTY(0, 0),
-		BEANS(1, 7),
-		FRUIT(2, 5),
-		CORN(3, 5),
-		TUNA(4, 4);
+		EMPTY(0),
+		BEANS(7),
+		FRUIT(5),
+		CORN(5),
+		TUNA(4);
 
-		private final int meta;
 		private final int amount;
 		
-		Type(int meta, int amount) {
-			this.meta = meta;
+		Type(int amount) {
 			this.amount = amount;
-		}
-		
-		public static Type getFromMeta(int meta) {
-			for(Type type : values()) {
-				if(type.getMeta() == meta)return type;
-			}
-			return EMPTY;
-		}
-
-		public int getMeta() {
-			return meta;
 		}
 
 		public int getAmount() {

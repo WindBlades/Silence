@@ -2,7 +2,7 @@
    "forge_marker": 1,
    "variants": {
        "variant" : {
-           "bottle": { "model": "silence:bottle_green1" },
+           "bottle_1": { "model": "silence:bottle_green1" },
            "bottle_2": { "model": "silence:bottle_green2" },
            "bottle_3": { "model": "silence:bottle_green3" }
         },

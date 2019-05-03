@@ -1,9 +1,9 @@
 package fr.wind_blade.silence.common.events;
 
 import fr.wind_blade.silence.Silence;
+import fr.wind_blade.silence.common.IVariantProvider;
 import fr.wind_blade.silence.common.blocks.BlocksSL;
 import fr.wind_blade.silence.common.blocks.ItemBlockGeneric;
-import fr.wind_blade.silence.common.items.IMetaProvider;
 import fr.wind_blade.silence.common.items.ItemsSL;
 import net.minecraft.block.Block;
 import net.minecraft.client.renderer.block.model.ModelResourceLocation;
@@ -22,7 +22,7 @@ public class RegistryEventHandler {
 
 	@SubscribeEvent
 	public static void registerItems(RegistryEvent.Register<Item> e) {
-		BlocksSL.blocks.forEach(block -> ItemsSL.items.add((block instanceof IMetaProvider ? new ItemBlockGeneric(block, ((IMetaProvider)block).getMaxMeta()) : new ItemBlock(block)).setUnlocalizedName(block.getUnlocalizedName()).setRegistryName(block.getRegistryName()).setCreativeTab(ItemsSL.miscellaneous)));
+		BlocksSL.blocks.forEach(block -> ItemsSL.items.add((block instanceof IVariantProvider ? new ItemBlockGeneric(block, ((IVariantProvider)block).getMaxVariants()) : new ItemBlock(block)).setUnlocalizedName(block.getUnlocalizedName()).setRegistryName(block.getRegistryName()).setCreativeTab(ItemsSL.miscellaneous)));
 		ItemsSL.items.forEach(e.getRegistry()::register);
 	}
 
@@ -39,8 +39,8 @@ public class RegistryEventHandler {
 
 	@SideOnly(Side.CLIENT)
 	public static void registerItemsModels(Item item) {
-		if(item instanceof IMetaProvider) {
-			for(int i = 0; i < ((IMetaProvider)item).getMaxMeta(); i++) {
+		if(item instanceof IVariantProvider) {
+			for(int i = 0; i < ((IVariantProvider)item).getMaxVariants(); i++) {
 				registerItemsModels(item, i);
 			}
 		}
@@ -48,10 +48,18 @@ public class RegistryEventHandler {
 	}
 
 	@SideOnly(Side.CLIENT)
-	public static void registerItemsModels(Item item, int metadata) {
-		if (metadata < 0) metadata = 0;
-		String resourceName = item.getRegistryName().toString();
-		if (metadata > 0) resourceName += "_" + String.valueOf(metadata);
-		ModelLoader.setCustomModelResourceLocation(item, metadata, new ModelResourceLocation(resourceName, "inventory"));
+	public static void registerItemsModels(Item item, int variant) {
+		if (variant < 0) variant = 0;		
+		String resourceName;
+		
+		if(item instanceof IVariantProvider) {
+			resourceName = ((IVariantProvider)item).getVariantName(variant);
+		}
+		else{
+			resourceName = item.getRegistryName().toString();
+			if (variant > 0) resourceName += "_" + String.valueOf(variant);
+		}
+		
+		ModelLoader.setCustomModelResourceLocation(item, variant, new ModelResourceLocation(resourceName, "inventory"));
 	}
 }

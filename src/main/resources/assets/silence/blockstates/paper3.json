@@ -2,10 +2,8 @@
    "forge_marker": 1,
    "variants": {
        "variant" : {
-           "bottle_1": { "model": "silence:bottle_red1" },
-           "bottle_2": { "model": "silence:bottle_red2" },
-           "bottle_3": { "model": "silence:bottle_red3" },
-           "bottle_4": { "model": "silence:bottle_red4" }
+           "paper": { "model": "silence:paper_8" },
+           "paper_1": { "model": "silence:paper_9" }
         },
         
         "facing" : {

@@ -23,9 +23,9 @@ public class BlockGenericDecoration extends Block {
 	}
 
 	@Override
-    protected BlockStateContainer createBlockState() {
-        return new BlockStateContainer(this, FACING);
-    }
+	protected BlockStateContainer createBlockState() {
+		return new BlockStateContainer(this, FACING);
+	}
 
 	@Override
 	public IBlockState getStateFromMeta(int meta) {

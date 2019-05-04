@@ -21,6 +21,9 @@ public class BlocksSL {
 	public static final BlockVariant<Paper> paper1 = getBlock(BlockVariant.create(Material.ROCK, Paper.class), "paper1");
 	public static final BlockVariant<Paper2> paper2 = getBlock(BlockVariant.create(Material.ROCK, Paper2.class), "paper2");
 	public static final BlockVariant<Paper3> paper3 = getBlock(BlockVariant.create(Material.ROCK, Paper3.class), "paper3");
+	public static final BlockVariant<Ground_Blood> ground_blood = getBlock(BlockVariant.create(Material.ROCK, Ground_Blood.class), "ground_blood");
+	public static final BlockVariant<Bulb> bulb = getBlock(BlockVariant.create(Material.ROCK, Bulb.class), "bulb");
+	public static final BlockVariant<Pens> pens = getBlock(BlockVariant.create(Material.ROCK, Pens.class), "pens");
 	public static final Block tire = getBlock(new BlockGenericDecoration(Material.GLASS), "tire");
 
 	private static Block getBlock(String name, Material material) {
@@ -109,6 +112,44 @@ public class BlocksSL {
 		public final String name;
 		
 		Paper3(String name){this.name = name;};
+		
+		@Override
+		public String getName() {return this.name;}
+	}
+	
+	public enum Ground_Blood implements IStringSerializable {
+		BLOOD("blood");
+		
+		public final String name;
+		
+		Ground_Blood(String name){this.name = name;};
+		
+		@Override
+		public String getName() {return this.name;}
+	}
+	
+	public enum Bulb implements IStringSerializable {
+		BULB("bulb"),
+		BULB_1("bulb_1"),
+		BULB_2("bulb_2");
+		
+		public final String name;
+		
+		Bulb(String name){this.name = name;}
+		
+		@Override
+		public String getName() {return this.name;}
+	}
+	
+	public enum Pens implements IStringSerializable {
+		PENS("pens"),
+		PENS_1("pens_1"),
+		PENS_2("pens_2"),
+		PENS_3("pens_3");
+		
+		public final String name;
+		
+		Pens(String name){this.name = name;}
 		
 		@Override
 		public String getName() {return this.name;}
